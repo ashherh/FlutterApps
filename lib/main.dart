@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
             height: 80,
             width: 80,
             margin: EdgeInsets.only(
-                top: 680, left: MediaQuery.of(context).size.width * 0.5 - 40),
+                top: MediaQuery.of(context).size.height * 0.5 + 180/*for Iphone 680*/, left: MediaQuery.of(context).size.width * 0.5 - 40),
             child: FloatingActionButton(
               child: Icon(
                 Icons.add,
