@@ -13,41 +13,44 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: AppBar(
-          title: Text('Project'),
+      appBar: AppBar(
+        title: Text('Project'),
+      ),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              gradient: RadialGradient(
+                  center: const Alignment(0, 0.8),
+                  radius: 1.5,
+                  colors: [
+                const Color(0xFF7F04AB),
+                const Color(0xFF00063A),
+              ])),
         ),
-        body: Stack(children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-                gradient: RadialGradient(
-                    center: const Alignment(0, 0.8),
-                    radius: 1.5,
-                    colors: [
-                  const Color(0xFF7F04AB),
-                  const Color(0xFF00063A),
-                ])),
-          ),
-          Container(
-            height: 80,
-            width: 80,
-            margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.5 + 180/*for Iphone 680*/, left: MediaQuery.of(context).size.width * 0.5 - 40),
-            child: FloatingActionButton(
-              child: Icon(
-                Icons.add,
-                size: 70,
-                color: const Color(0xFF00063A),
-              ),
-              backgroundColor: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NewProject()),
-                );
-              },
-            ),
-          )
-        ]));
+
+      ]),
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          size: 50,
+          color: const Color(0xFF00063A),
+        ),
+        backgroundColor: Colors.white,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewProject()),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      
+
+
+
+    );
   }
 }
 
