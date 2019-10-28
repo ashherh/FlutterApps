@@ -55,20 +55,25 @@ class HomeScreen extends StatelessWidget {
 }
 
 class NewProject extends StatelessWidget {
+
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("New Project"),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
-      ),
+      body: SafeArea(
+        top: false,
+        bottom: false,
+        child: Container(
+          child: Form(
+            key: _formkey,
+
+          )
+        )
+      )
     );
   }
 }
