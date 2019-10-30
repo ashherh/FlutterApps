@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:grouped_buttons/grouped_buttons.dart';
 
 void main() => runApp(Project());
 
 class Project extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(home: new HomeScreen());
+    return new MaterialApp(
+      home: new HomeScreen()
+      );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  HomeScreenState createState() => HomeScreenState();
+}
+
+
+class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -46,22 +55,25 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
-      
-
-
 
     );
   }
 }
 
-class NewProject extends StatelessWidget {
+class NewProject extends StatefulWidget {
+  @override
+  _NewProjectState createState() => _NewProjectState();
+}
+
+
+class _NewProjectState extends State<NewProject> {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
   final TextEditingController projectName = TextEditingController();
   final TextEditingController projectRequiremt = TextEditingController();
   final TextEditingController projectDeadline = TextEditingController();
   
+  List<String> _checked = [""];
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +134,43 @@ class NewProject extends StatelessWidget {
                   maxLines: 4,
                 ),
 
+                Container(
+                  padding: const EdgeInsets.only(left: 14.0, top: 14.0),
+                    child: Text("Basic CheckboxGroup",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0
+                    ),
+                  ),
+                ),
+
+
+                CheckboxGroup(
+                  orientation: GroupedButtonsOrientation.HORIZONTAL,
+                  margin: const EdgeInsets.only(left: 12.0),
+                  onSelected: (List selected) => setState((){
+                  _checked = selected;
+                  }
+                  ),
+                  
+                  labels: <String>[
+                    "A",
+                    "B",
+
+                  ],
+                  checked: _checked,
+                  itemBuilder: (Checkbox cb, Text txt, int i){
+                    return Column(
+                      children: <Widget>[
+                        Icon(Icons.polymer),
+                        cb,
+                        txt,
+                      ],
+                    );
+                  },
+                ),
+                
+                
 
               ],
             ),
